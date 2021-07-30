@@ -1,6 +1,7 @@
 import {Message} from './Message.js';
 import {InputForm} from './InputForm.js';
 import React, {useState, useCallback, useEffect} from 'react';
+
 function App() {
   const [messages, setMessages] = useState([]);
 
@@ -14,15 +15,15 @@ function App() {
     const lastMessage = messages[messages.length-1];
     if (lastMessage && lastMessage.sender === 'User') {
       setTimeout(()=>{
-        setMessages([...messages,
-          {
-            sender: 'Tong Po',
-            text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+        addMessage(
+            {
+              sender: 'Tong Po',
+              text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
             Ut vel est dui. Nam dignissim sit amet eros vel rutrum. 
             Proin elit nisl, auctor sed urna in, porta tristique velit. 
             Nam. 😀 😀`,
-          },
-        ]);
+            },
+        );
       }, 1500);
     }
   }, [messages]);
