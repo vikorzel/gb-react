@@ -1,5 +1,5 @@
-import {Message} from './Message.js';
-import {InputForm} from './InputForm.js';
+import {Message} from './Message';
+import {InputForm} from './InputForm';
 import React, {useState, useCallback, useEffect} from 'react';
 
 function App() {
@@ -7,9 +7,8 @@ function App() {
 
   const addMessage = useCallback(
       (message) => {
-        console.log('mew', message);
-        setMessages([...messages, message]);
-      }, [messages],
+        setMessages((state) => [...state, message]);
+      },
   );
   useEffect(()=>{
     const lastMessage = messages[messages.length-1];
@@ -32,7 +31,7 @@ function App() {
     <div className="App">
       <div className="messages">
         {messages.map((message, index) =>
-          <Message text={message.text} sender={message.sender} key={index}/>)}
+          <Message message={message} key={index}/>)}
       </div>
       <InputForm addMessage={addMessage}/>
     </div>
