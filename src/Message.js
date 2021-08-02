@@ -5,8 +5,6 @@ export class Message extends Component {
   constructor(prop) {
     super(prop);
     this.dateTime = (new Date()).toGMTString();
-    this.text = prop.message.text;
-    this.sender = prop.message.sender;
   }
 
   static get propTypes() {
